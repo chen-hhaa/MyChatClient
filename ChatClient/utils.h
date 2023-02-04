@@ -8,6 +8,6 @@
 #include<iostream>
 using namespace std;
 
-void welcomeInfo();
+void welcomeInfo(SOCKET sock);
 
-void logIn();
+string logIn(SOCKET sock);

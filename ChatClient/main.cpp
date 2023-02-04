@@ -20,14 +20,15 @@ unsigned SendMsg(void* arg)
     while (1)
     {
         scanf("%s", szMsg);
+        /*
         if (client_name == "") {
             client_name = szMsg;
-        }
+        }*/
         if (!strcmp(szMsg, "QUIT") || !strcmp(szMsg, "quit"))
         {
             //发送退出消息
-            std::string quit_msg = client_name + " quit the chat room!";
-            send(sock, quit_msg.c_str(), quit_msg.size(), 0);
+            //std::string quit_msg = client_name + " quit the chat room!";
+            //send(sock, quit_msg.c_str(), quit_msg.size(), 0);
             closesocket(sock);
             exit(0);
         }
@@ -94,9 +95,9 @@ int main()
     }
     else
     {
-        // TODO: 欢迎界面, 让用户选择登录或者注册选项
-        welcomeInfo();
-        printf("欢迎来到私人聊天室，请输入你的聊天用户名:");
+        // 欢迎界面, 让用户选择登录或者注册选项
+        welcomeInfo(hSock);
+        //printf("欢迎来到私人聊天室，请输入你的聊天用户名:");
     }
 
     //循环发消息

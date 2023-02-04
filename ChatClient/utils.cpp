@@ -8,15 +8,17 @@ void welcomeInfo(SOCKET sock)
 	int flag = 2;
 	scanf("%d", flag);
 	if (flag == 1) {
-		logIn(sock);
+		while (logIn(sock) != "ok") {
+			cout << "µÇÂ¼Ê§°Ü£¬ÇëÖØÊÔ¡£" << endl;
+		}
 		cout << "µÇÂ¼³É¹¦£¡" << endl;
 	}
 	else if(flag == 2){
-		registerC();
+		//TODO: registerC();
 	}
 }
 
-void logIn(SOCKET sock)
+string logIn(SOCKET sock)
 {
 	string user_name, pwd;
 	cout << "ÓÃ»§Ãû£º" << endl;
@@ -25,8 +27,16 @@ void logIn(SOCKET sock)
 	cout << "ÃÜÂë£º" << endl;
 	getline(cin, pwd);
 
-	string msg = "LOGIN:" + user_name + pwd;
+	string msg = "[login]:[user_name]" + user_name + "[password]" + pwd;
 	send(sock, msg.c_str(), msg.size(), 0);
 
-
+	char recv_msg[1024];
+	int len = recv(sock, recv_msg, sizeof(msg) - 1, 0);
+	if (len == -1)
+	{
+	}
+	recv_msg[len] = '\0';
+	string result = recv_msg;
+	return result;
+	
 }
