@@ -83,8 +83,8 @@ int main()
     SOCKADDR_IN servAdr;
     memset(&servAdr, 0, sizeof(servAdr));
     servAdr.sin_family = AF_INET;
-    servAdr.sin_port = htons(9998);
-    inet_pton(AF_INET, "43.136.36.59", &servAdr.sin_addr); // inet_pton函数将IP地址从点分十进制转成4字节整数型
+    servAdr.sin_port = htons(9999);
+    inet_pton(AF_INET, "192.168.162.135", &servAdr.sin_addr); // inet_pton函数将IP地址从点分十进制转成4字节整数型
 
 
     //连接服务器
