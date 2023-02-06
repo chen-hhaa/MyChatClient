@@ -7,13 +7,14 @@ void welcomeInfo(SOCKET sock)
 	printf("ÇëÊäÈë£º");
 	int flag = 2;
 	cin >> flag;
+	string response;
 	if (flag == 1) {
-		while (logIn(sock) != "ok") {
-			cout << "µÇÂ¼Ê§°Ü£¬ÇëÖØÊÔ¡£" << endl;
+		while ((response = logIn(sock)) != "ok") {
+			cout << response << " ÇëÖØÊÔ¡£" << endl;
 		}
 		cout << "µÇÂ¼³É¹¦£¡" << endl;
 	}
-	else if(flag == 2){
+	else if (flag == 2) {
 		//TODO: registerC();
 	}
 }
@@ -41,5 +42,5 @@ string logIn(SOCKET sock)
 	recv_msg[len] = '\0';
 	string result = recv_msg;
 	return result;
-	
+
 }
