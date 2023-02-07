@@ -7,6 +7,7 @@
 #include<string>
 
 #include "utils.h"
+#include "ConfigReader.h"
 
 #pragma comment(lib,"Ws2_32.lib")
 #define BUF_SIZE 1024
@@ -84,12 +85,16 @@ int main()
 	SOCKET hSock;
 	hSock = socket(AF_INET, SOCK_STREAM, 0);
 
+	//读取配置文件
+	ConfigReader cfg_reader("connect.conf");
+	cfg_reader.readConfig();
+	unordered_map<string, string> cfg_dic = cfg_reader.get_config_dic();
 	//绑定端口
 	SOCKADDR_IN servAdr;
 	memset(&servAdr, 0, sizeof(servAdr));
 	servAdr.sin_family = AF_INET;
-	servAdr.sin_port = htons(9999);
-	inet_pton(AF_INET, "192.168.162.136", &servAdr.sin_addr); // inet_pton函数将IP地址从点分十进制转成4字节整数型
+	servAdr.sin_port = htons(atoi(cfg_dic["server_port"].c_str()));
+	inet_pton(AF_INET, cfg_dic["server_host_ip"].c_str(), &servAdr.sin_addr); // inet_pton函数将IP地址从点分十进制转成4字节整数型
 
 
 	//连接服务器
@@ -102,7 +107,6 @@ int main()
 	{
 		// 欢迎界面, 让用户选择登录或者注册选项
 		welcomeInfo(hSock);
-		//printf("欢迎来到私人聊天室，请输入你的聊天用户名:");
 	}
 
 	//循环发消息
@@ -120,4 +124,5 @@ int main()
 	closesocket(hSock);
 	WSACleanup();
 
+	return 0;
 }
