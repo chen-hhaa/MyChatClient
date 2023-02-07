@@ -1,7 +1,8 @@
 ﻿  main.cpp
-E:\VSwork\ChatClient\ChatClient\main.cpp(40,48): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+E:\VSwork\ChatClient\ChatClient\main.cpp(41,48): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
   test.cpp
   utils.cpp
-E:\VSwork\ChatClient\ChatClient\utils.cpp(35,39): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+E:\VSwork\ChatClient\ChatClient\utils.cpp(56,39): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
+E:\VSwork\ChatClient\ChatClient\utils.cpp(79,39): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
   正在生成代码...
   ChatClient.vcxproj -> E:\VSwork\ChatClient\x64\Debug\ChatClient.exe

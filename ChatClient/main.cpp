@@ -14,6 +14,7 @@
 char szMsg[BUF_SIZE];
 std::string client_name = "";
 
+
 unsigned SendMsg(void* arg)
 {
 	SOCKET sock = *((SOCKET*)arg);

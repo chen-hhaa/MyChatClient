@@ -11,3 +11,4 @@ using namespace std;
 void welcomeInfo(SOCKET sock);
 
 string logIn(SOCKET sock);
+string registerC(SOCKET sock);
